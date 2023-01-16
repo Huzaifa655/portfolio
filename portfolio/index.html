@@ -87,9 +87,7 @@
                         <div class="service-icon">
                             <i class="ri-stack-line"></i>
                         </div>
-                        <h5 class="mt-4">App Development
-
-                            </h5>
+                        <h5 class="mt-4">App Development</h5>
                         <p>Send me your idea and your expectations.
                             will return more than your expectations.</p>
                         <a href="#" class="custom-link">
@@ -372,114 +370,114 @@
     const message = document.getElementById("message");
 
     form.addEventListener("submit", function (e) {
-      e.preventDefault();
+    e.preventDefault();
 
-      const validation = checkInput();
-      if (validation) {
+    const validation = checkInput();
+    if (validation) {
         const scriptURL =
         "https://script.google.com/macros/s/AKfycby-KEOktWMxflEsYTUuPi54lgoW6ly_l5HJjM28_KXN4zgF1yvt_0AOt2Q6nkJH1K9k/exec";
 
         fetch(scriptURL, { method: "POST", body: new FormData(form) })
-          .then((response) => {
+        .then((response) => {
             alert("Success!", response);
 
             const Toast = Swal.mixin({
-              toast: true,
-              position: "bottom-start",
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
+            toast: true,
+            position: "bottom-start",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
                 toast.addEventListener("mouseenter", Swal.stopTimer);
                 toast.addEventListener("mouseleave", Swal.resumeTimer);
-              },
+            },
             });
 
             Toast.fire({
-              icon: "success",
-              title: "Form Submitted Successfully",
+            icon: "success",
+            title: "Form Submitted Successfully",
             });
 
             setTimeout(function () {
-              location.reload();
+            location.reload();
             }, 3000);
-          })
-          .catch((error) => {
+        })
+        .catch((error) => {
             console.error("Error!", error.message);
-          });
-      } else {
+        });
+    } else {
         const Toast = Swal.mixin({
-          toast: true,
-          position: "bottom-start",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
+        toast: true,
+        position: "bottom-start",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
             toast.addEventListener("mouseenter", Swal.stopTimer);
             toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
+        },
         });
 
         Toast.fire({
-          icon: "error",
-          title: "Something Went Wrong",
+        icon: "error",
+        title: "Something Went Wrong",
         });
-      }
+    }
     });
 
     function checkInput() {
-      const isvalid = new Array();
-      const nameval = username.value;
-      const emailval = email.value.trim();
-      const subjectval = subject.value.trim();
-      const messageval = message.value.trim();
+    const isvalid = new Array();
+    const nameval = username.value;
+    const emailval = email.value.trim();
+    const subjectval = subject.value.trim();
+    const messageval = message.value.trim();
 
       if (nameval === "" || nameval.match(/^ *$/) !== null) {
         document.getElementById("name-error").innerText =
-          "Name cannot be blank.";
+        "Name cannot be blank.";
         isvalid.push(false);
-      } else {
+    } else {
         isvalid.push(true);
-      }
+    }
 
-      if (emailval === "") {
+    if (emailval === "") {
         document.getElementById("email-error").innerText =
-          "Email field can't be blank";
+        "Email field can't be blank";
         isvalid.push(false);
-      } else if (!isEmail(emailval)) {
+    } else if (!isEmail(emailval)) {
         document.getElementById("email-error").innerText =
-          "Please enter a valid email";
+        "Please enter a valid email";
         isvalid.push(false);
-      } else {
+    } else {
         isvalid.push(true);
-      }
+    }
 
       if (subjectval === "" || subjectval.match(/^ *$/) !== null) {
         isvalid.push(false);
         document.getElementById("subject-error").innerText =
-          "Subject field can't be empty";
-      } else {
+        "Subject field can't be empty";
+    } else {
         isvalid.push(true);
-      }
+    }
 
       if (messageval === "" || messageval.match(/^ *$/) !== null) {
         document.getElementById("msg-error").innerText =
-          "Message field is empty";
+        "Message field is empty";
         isvalid.push(false);
-      } else {
+    } else {
         isvalid.push(true);
-      }
+    }
 
-      if (isvalid.includes(false)) return false;
-      else return true;
+    if (isvalid.includes(false)) return false;
+    else return true;
     }
 
     function isEmail(email) {
-      const filter =
+    const filter =
         /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-      if (filter.test(email)) return true;
-      else return false;
+    if (filter.test(email)) return true;
+    else return false;
     }
-  </script>
+</script>
 </body>
 </html>
